@@ -23,19 +23,11 @@ class GameCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        for subview in contentView.subviews {
-            subview.removeFromSuperview()
-        }
-    }
 }
 
 extension GameCollectionViewCell {
-    func setup(gameModel: GameModel) {
-        gameNameLabel.text = gameModel.title
+    func setup(topModel: TopModel) {
+        gameNameLabel.text = topModel.game.localizedName
         
         setLayout()
     }

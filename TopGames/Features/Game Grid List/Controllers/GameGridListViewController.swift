@@ -27,24 +27,25 @@ extension GameListInfoProtocol {
 class GameGridListViewController: UIViewController, GameListInfoProtocol {
     var datasource: CollectionViewSectionableDataSourceDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
-    var gamesList: [GameModel]
+    var topList: [TopModel] {
+        didSet { setupDatasource() }
+    }
     
-    init(gamesList: [GameModel]) {
-        self.gamesList = gamesList
+    init(topList: [TopModel]) {
+        self.topList = topList
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.gamesList = [GameModel]()
+        self.topList = [TopModel]()
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mockModels()
-        
-        getGames()
         setupDatasource()
+
+        getGames()
         // Do any additional setup after loading the view.
     }
 
@@ -54,7 +55,23 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     }
     
     func getGames() {
-        SwiftSpinner.show("Loading games...")
+        if isReachable {
+            SwiftSpinner.show("Loading games...")
+            RouterService.sharedInstance.FetchTopGames(with: 10, and: 10, { (result) in
+                switch(result) {
+                case .success(let top):
+                    if let top = top as? [TopModel] {
+                        self.topList = top
+                    }
+                    break
+                case .error(let error):
+                    print(error)
+                }
+                SwiftSpinner.hide()
+            })
+        } else {
+            
+        }
     }
     
     func setupDatasource() {
@@ -65,19 +82,15 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     }
     
     func gamesInfoSections() -> [CollectionSectionable] {
-        return [GamesFactory(collectionView: collectionView, with: self, and: gamesList).build()]
+        return [GamesFactory(collectionView: collectionView, with: self, and: topList).build()]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = sender as? IndexPath {
             if let detailsViewController = segue.destination as? GameDetailViewController {
-                detailsViewController.gameModel = gamesList[indexPath.row]
+                detailsViewController.topModel = topList[indexPath.row]
             }
         }
-    }
-    
-    func mockModels() {
-        self.gamesList = [GameModel(imageUrl: "", title: "Test"),  GameModel(imageUrl: "", title: "Test1"),  GameModel(imageUrl: "", title: "Test2"),  GameModel(imageUrl: "", title: "Test3"),  GameModel(imageUrl: "", title: "Test4"),  GameModel(imageUrl: "", title: "Test5"),  GameModel(imageUrl: "", title: "Test6"),  GameModel(imageUrl: "", title: "Test7")]
     }
 }
 

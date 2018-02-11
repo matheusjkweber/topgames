@@ -13,7 +13,7 @@ struct Endpoints {
     enum URI : String {
         case Games = "/games"
     }
-    static let clientId = "1234"
+    static let clientId = "7xj31zgv26vgmqf7j625kfbcx7a99q"
     fileprivate static let baseURL = "https://api.twitch.tv/kraken"
     
     static func urlEndpoint(_ uri:URI, id:Int? = nil) -> String {

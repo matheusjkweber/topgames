@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="2NG-hh-aW9">
-                        <rect key="frame" x="25" y="16" width="100" height="100"/>
+                        <rect key="frame" x="25" y="8" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="Acu-IB-1hr"/>
                             <constraint firstAttribute="height" constant="100" id="HtJ-5g-q2E"/>
@@ -31,8 +31,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af5-xX-zXA">
-                        <rect key="frame" x="20" y="125" width="110" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af5-xX-zXA">
+                        <rect key="frame" x="20" y="117" width="110" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="110" id="WLr-t4-CUH"/>
                         </constraints>
@@ -47,7 +47,7 @@
                 <constraint firstItem="af5-xX-zXA" firstAttribute="top" secondItem="2NG-hh-aW9" secondAttribute="bottom" constant="9" id="Wiz-Lj-UpZ"/>
                 <constraint firstItem="af5-xX-zXA" firstAttribute="centerX" secondItem="cyR-Hf-GmU" secondAttribute="centerX" id="lSG-4y-tEA"/>
                 <constraint firstItem="2NG-hh-aW9" firstAttribute="centerX" secondItem="cyR-Hf-GmU" secondAttribute="centerX" id="uwN-Qg-a8k"/>
-                <constraint firstItem="2NG-hh-aW9" firstAttribute="top" secondItem="cyR-Hf-GmU" secondAttribute="top" constant="16" id="zNT-dS-TMZ"/>
+                <constraint firstItem="2NG-hh-aW9" firstAttribute="top" secondItem="cyR-Hf-GmU" secondAttribute="top" constant="8" id="zNT-dS-TMZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="cyR-Hf-GmU"/>
             <size key="customSize" width="202" height="173"/>

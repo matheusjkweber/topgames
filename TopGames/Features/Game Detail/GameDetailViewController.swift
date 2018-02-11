@@ -9,7 +9,7 @@
 import UIKit
 
 class GameDetailViewController: UIViewController {
-    var gameModel: GameModel?
+    var topModel: TopModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,6 @@ class GameDetailViewController: UIViewController {
     
     func configureNavigation() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        title = gameModel?.title
+        title = topModel?.game.localizedName
     }
 }

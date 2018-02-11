@@ -12,9 +12,9 @@ import UIKit
 class GamesFactory {
     let handler: GameCollectionViewCellBuilderDelegate
     let collectionView: UICollectionView
-    let gamesList: [GameModel]
+    let gamesList: [TopModel]
     
-    init(collectionView: UICollectionView, with handler: GameCollectionViewCellBuilderDelegate, and gamesList: [GameModel]) {
+    init(collectionView: UICollectionView, with handler: GameCollectionViewCellBuilderDelegate, and gamesList: [TopModel]) {
         self.collectionView = collectionView
         self.gamesList = gamesList
         self.handler = handler
@@ -24,7 +24,7 @@ class GamesFactory {
         var builders = [CollectionViewCellBuilder]()
         
         for game in gamesList {
-            let builder = GameCollectionViewCellBuilder(gameModel: game)
+            let builder = GameCollectionViewCellBuilder(topModel: game)
             builder.delegate = handler
             builders.append(builder)
         }
