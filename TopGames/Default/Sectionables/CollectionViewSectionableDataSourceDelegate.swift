@@ -53,11 +53,16 @@ class BaseSection: CollectionSectionable {
     }
 }
 
+protocol CollectionViewSectionableDelegate: class {
+    func willDisplay()
+}
+
 class CollectionViewSectionableDataSourceDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Data Source
     let sections: [CollectionSectionable]
-    
+    weak var delegate: CollectionViewSectionableDelegate?
+
     init(sections: [CollectionSectionable]) {
         self.sections = sections
     }
@@ -86,5 +91,11 @@ class CollectionViewSectionableDataSourceDelegate: NSObject, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = sections[indexPath.section]
         return section.didSelectItemAt(indexPath, in: collectionView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == sections[indexPath.section].numberOfRows() - 1 {
+            delegate?.willDisplay()
+        }
     }
 }

@@ -33,8 +33,11 @@ enum RequestType {
 class GameGridListViewController: UIViewController, GameListInfoProtocol {
     var datasource: CollectionViewSectionableDataSourceDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var offlineSometime: Bool = false
     var page = 1
+    var offset = 10
+    
     private let refreshControl = UIRefreshControl()
 
     var topList: [TopModel] {
@@ -66,7 +69,6 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     
     func getGames() {
         let limit = page * 10
-        let offset = (page - 1) * 10
         if isReachable {
             if offlineSometime {
                 callMessageView(text: "Agora que você está de volta online, estamos atualizando a lista de jogos com o servidor!", type: .onlineAgain)
@@ -80,7 +82,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
                         for top in tops {
                             CoreDataManager.shared.addGame(topModel: top)
                         }
-                        self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
+                        self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: self.offset)
                         self.stopRefresher()
                     }
                     break
@@ -103,6 +105,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     
     func setupDatasource() {
         datasource = CollectionViewSectionableDataSourceDelegate(sections: sections())
+        datasource?.delegate = self
         collectionView.delegate = datasource
         collectionView.dataSource = datasource
         collectionView.reloadData()
@@ -154,5 +157,13 @@ extension GameGridListViewController {
     
     func stopRefresher(){
         refreshControl.endRefreshing()
+    }
+}
+
+//MARK - CollectionViewSectionable Delegate
+extension GameGridListViewController: CollectionViewSectionableDelegate {
+    func willDisplay() {
+        page = page + 1
+        getGames()
     }
 }

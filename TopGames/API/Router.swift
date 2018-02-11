@@ -77,10 +77,6 @@ class RouterService {
        sessionManager.request(requestURL)
             .validate()
             .responseData() { response in
-                print(requestURL.urlRequest)
-                print(response)
-                print(response.result)
-                print(response.result.value)
                 switch response.result {
                     
                 case .success (let result):
