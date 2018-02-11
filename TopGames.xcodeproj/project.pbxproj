@@ -30,6 +30,7 @@
 		23E727A120308871001C5ED9 /* AppDelegate+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A020308870001C5ED9 /* AppDelegate+Reachability.swift */; };
 		23E727A52030B717001C5ED9 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E727A42030B717001C5ED9 /* MessageView.xib */; };
 		23E727A72030B8FC001C5ED9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A62030B8FC001C5ED9 /* MessageView.swift */; };
+		23E727AA2030D43B001C5ED9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A92030D43B001C5ED9 /* CoreDataManager.swift */; };
 		5CADAD2B5E96BEF80828E7AC /* Pods_TopGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4FBE3152A0AB6C0A417A06 /* Pods_TopGamesTests.framework */; };
 		5EDF64AFEA92DA8240F0BE04 /* Pods_TopGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */; };
 		9F3E31031E13D09DD17E3F64 /* Pods_TopGamesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8534292F49CC85F50CF774DE /* Pods_TopGamesUITests.framework */; };
@@ -84,6 +85,7 @@
 		23E727A22030889C001C5ED9 /* TopGames-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TopGames-Bridging-Header.h"; sourceTree = "<group>"; };
 		23E727A42030B717001C5ED9 /* MessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
 		23E727A62030B8FC001C5ED9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		23E727A92030D43B001C5ED9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		294A10E04D5A1396363F5F7C /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 		696DBC0BE93AE07076DB3397 /* Pods-TopGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.debug.xcconfig"; sourceTree = "<group>"; };
 		69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +212,7 @@
 				23D3B87D202F9B65004A34A1 /* Features */,
 				23D3B886202FB735004A34A1 /* Models */,
 				23E7279720308462001C5ED9 /* Extensions */,
+				23E727A82030D401001C5ED9 /* CoreData */,
 				23E7279C20308829001C5ED9 /* Libraries */,
 				23D3B85B202F97AB004A34A1 /* Info.plist */,
 			);
@@ -330,6 +333,14 @@
 				23E727A62030B8FC001C5ED9 /* MessageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		23E727A82030D401001C5ED9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				23E727A92030D43B001C5ED9 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		3C15911C68E62518E2A9B171 /* Pods */ = {
@@ -648,6 +659,7 @@
 				23E7279B203086A6001C5ED9 /* UIViewController+Ext.swift in Sources */,
 				23D3B88E202FB8C3004A34A1 /* GamesFactory.swift in Sources */,
 				23D3B885202FA59F004A34A1 /* CollectionViewCellBuilder.swift in Sources */,
+				23E727AA2030D43B001C5ED9 /* CoreDataManager.swift in Sources */,
 				23D3B84D202F97AB004A34A1 /* AppDelegate.swift in Sources */,
 				23E727A120308871001C5ED9 /* AppDelegate+Reachability.swift in Sources */,
 				23E7279520307F61001C5ED9 /* Router.swift in Sources */,

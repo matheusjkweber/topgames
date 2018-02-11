@@ -45,6 +45,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
         super.viewDidLoad()
         setupDatasource()
         getGames()
+        CoreDataManager.shared.retrieveGames()
         // Do any additional setup after loading the view.
     }
 
