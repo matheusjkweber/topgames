@@ -44,7 +44,6 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatasource()
-
         getGames()
         // Do any additional setup after loading the view.
     }
@@ -83,6 +82,10 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     
     func gamesInfoSections() -> [CollectionSectionable] {
         return [GamesFactory(collectionView: collectionView, with: self, and: topList).build()]
+    }
+    
+    func callMessageView(text: String, type: MessageType) {
+        MessageView.callMessageView(in: self, text: text, type: type)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
