@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class GameCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var gameImageView: UIImageView!
@@ -30,6 +31,7 @@ extension GameCollectionViewCell {
         gameNameLabel.text = topModel.game.localizedName
         
         setLayout()
+        getImageFromServer(from: topModel.game.logo.medium, with: topModel.game.localizedName)
     }
     
     fileprivate func setLayout() {
@@ -38,6 +40,23 @@ extension GameCollectionViewCell {
         
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.borderWidth = 1
+    }
+    
+    func getImageFromServer(from imagePath: String, with name: String) {
+        let cache = ImageCache()
+        if let image = cache.getSavedImage(named: name) {
+            UIView.transition(with: gameImageView,
+                                      duration: 0.5,
+                                      options: UIViewAnimationOptions.transitionCrossDissolve,
+                                      animations: { self.gameImageView.image = image },
+                                      completion: nil)
+        } else if let url = URL(string: imagePath){
+            gameImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "no-image"), imageTransition: .crossDissolve(TimeInterval(0.5)), completion:{ response in
+                if let image = response.result.value{
+                    cache.saveImageToDisk(image: image, and: name)
+                }
+            })
+        }
     }
 }
 

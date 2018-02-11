@@ -75,10 +75,10 @@ class CoreDataManager {
         }
     }
     
-    func retrieveGames() -> [TopModel] {
+    func retrieveGames(limit: Int, offset: Int) -> [TopModel] {
         let topFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Top")
         topFetch.sortDescriptors = [NSSortDescriptor(key: "viewers", ascending: false)]
-
+        
         var topList = [TopModel]()
         do {
             if let tops = try managedContext.fetch(topFetch) as? [Top] {
