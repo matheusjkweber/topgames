@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 protocol GameListInfoProtocol {
     func sections() -> [CollectionSectionable]
@@ -41,6 +42,8 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         mockModels()
+        
+        getGames()
         setupDatasource()
         // Do any additional setup after loading the view.
     }
@@ -48,6 +51,10 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getGames() {
+        SwiftSpinner.show("Loading games...")
     }
     
     func setupDatasource() {

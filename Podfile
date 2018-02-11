@@ -11,7 +11,7 @@ target 'TopGames' do
     pod 'AlamofireImage'
 
     # Loader
-    pod 'SVProgressHUD'
+    pod "SwiftSpinner"
 
   target 'TopGamesTests' do
     inherit! :search_paths
