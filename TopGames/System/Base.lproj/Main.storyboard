@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pNh-XS-2kQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mE4-92-nOq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vt1-l0-6J3">
-                                <rect key="frame" x="4" y="90" width="367" height="577"/>
+                                <rect key="frame" x="4" y="72" width="367" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UTi-Wh-KbY">
                                     <size key="itemSize" width="50" height="50"/>
@@ -29,40 +29,32 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOP 100 Games on Twitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLR-te-HXh">
-                                <rect key="frame" x="67" y="35" width="241.5" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="dHE-ZX-N0J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Q2q-xt-xuF" firstAttribute="trailing" secondItem="Vt1-l0-6J3" secondAttribute="trailing" constant="4" id="7UT-7C-c1M"/>
-                            <constraint firstItem="JLR-te-HXh" firstAttribute="centerX" secondItem="Q2q-xt-xuF" secondAttribute="centerX" id="9P2-mE-h5w"/>
                             <constraint firstItem="Vt1-l0-6J3" firstAttribute="leading" secondItem="Q2q-xt-xuF" secondAttribute="leading" constant="4" id="Nqg-3U-Frt"/>
                             <constraint firstItem="Q2q-xt-xuF" firstAttribute="bottom" secondItem="Vt1-l0-6J3" secondAttribute="bottom" id="O1F-3U-Rhf"/>
-                            <constraint firstItem="JLR-te-HXh" firstAttribute="top" secondItem="Q2q-xt-xuF" secondAttribute="top" constant="15" id="PPe-JV-AAA"/>
-                            <constraint firstItem="Vt1-l0-6J3" firstAttribute="top" secondItem="JLR-te-HXh" secondAttribute="bottom" constant="34" id="pjP-HO-22n"/>
+                            <constraint firstItem="Vt1-l0-6J3" firstAttribute="top" secondItem="Q2q-xt-xuF" secondAttribute="top" constant="8" id="neL-Xh-xLo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q2q-xt-xuF"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Top 100 Games on Twitch" id="fLZ-id-xjJ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Mjm-gZ-MgU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Vt1-l0-6J3" id="X91-tE-EKY"/>
-                        <segue destination="Oyr-0e-gkF" kind="show" id="kWB-ol-oXp"/>
+                        <segue destination="Oyr-0e-gkF" kind="show" identifier="segueToGameDetail" id="kWB-ol-oXp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61n-F8-6Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.60000000000002" y="21.139430284857571"/>
+            <point key="canvasLocation" x="744.79999999999995" y="21.139430284857571"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Detail View Controller-->
         <scene sceneID="v0U-ya-3VI">
             <objects>
-                <viewController id="Oyr-0e-gkF" sceneMemberID="viewController">
+                <viewController id="Oyr-0e-gkF" customClass="GameDetailViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BvM-Xw-tJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +64,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEf-xM-gpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126" y="21"/>
+            <point key="canvasLocation" x="1464.8" y="20.239880059970016"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mwE-Js-qrR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mE4-92-nOq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tIw-iV-cQl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pNh-XS-2kQ" kind="relationship" relationship="rootViewController" id="Pgr-t6-3Ah"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DW2-Ld-q5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25" y="20"/>
         </scene>
     </scenes>
 </document>

@@ -16,6 +16,7 @@ protocol CollectionSectionable {
                                 in collectionView: UICollectionView) -> CGSize
     func cellForIndexPath(_ indexPath: IndexPath,
                           in collectionView: UICollectionView) -> UICollectionViewCell
+    func didSelectItemAt(_ indexPath: IndexPath, in collectionView: UICollectionView)
 }
 
 class BaseSection: CollectionSectionable {
@@ -47,7 +48,8 @@ class BaseSection: CollectionSectionable {
     }
     
     func didSelectItemAt(_ indexPath: IndexPath, in collectionView: UICollectionView) {
-        
+        let builder = cellBuilders[indexPath.row]
+        builder.didSelectItemAt(indexPath: indexPath)
     }
 }
 
@@ -82,7 +84,7 @@ class CollectionViewSectionableDataSourceDelegate: NSObject, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let section[indexPath.section]
+        let section = sections[indexPath.section]
         return section.didSelectItemAt(indexPath, in: collectionView)
     }
 }

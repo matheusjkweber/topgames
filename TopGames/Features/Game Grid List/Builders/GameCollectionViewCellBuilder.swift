@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol GameCollectionViewCellBuilderDelegate: class {
+    func didSelectItemAt(_ indexPath: IndexPath)
+}
+
 final class GameCollectionViewCellBuilder: CollectionViewCellBuilder {
     var gameModel: GameModel
+    weak var delegate: GameCollectionViewCellBuilderDelegate?
     
     init(gameModel: GameModel) {
         self.gameModel = gameModel
@@ -37,5 +42,9 @@ final class GameCollectionViewCellBuilder: CollectionViewCellBuilder {
     
     func reuseIdentifier() -> String {
         return ReuseIdentifiers.gameCollectionCell.rawValue
+    }
+    
+    func didSelectItemAt(indexPath: IndexPath) {
+        delegate?.didSelectItemAt(indexPath)
     }
 }

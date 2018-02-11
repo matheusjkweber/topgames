@@ -58,10 +58,24 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     }
     
     func gamesInfoSections() -> [CollectionSectionable] {
-        return [GamesFactory(collectionView: collectionView, gamesList: gamesList).build()]
+        return [GamesFactory(collectionView: collectionView, with: self, and: gamesList).build()]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = sender as? IndexPath {
+            if let detailsViewController = segue.destination as? GameDetailViewController {
+                detailsViewController.gameModel = gamesList[indexPath.row]
+            }
+        }
     }
     
     func mockModels() {
         self.gamesList = [GameModel(imageUrl: "", title: "Test"),  GameModel(imageUrl: "", title: "Test1"),  GameModel(imageUrl: "", title: "Test2"),  GameModel(imageUrl: "", title: "Test3"),  GameModel(imageUrl: "", title: "Test4"),  GameModel(imageUrl: "", title: "Test5"),  GameModel(imageUrl: "", title: "Test6"),  GameModel(imageUrl: "", title: "Test7")]
+    }
+}
+
+extension GameGridListViewController: GameCollectionViewCellBuilderDelegate {
+    func didSelectItemAt(_ indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segueToGameDetail", sender: indexPath)
     }
 }
