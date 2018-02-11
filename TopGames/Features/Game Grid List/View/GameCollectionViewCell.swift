@@ -28,7 +28,7 @@ class GameCollectionViewCell: UICollectionViewCell {
 
 extension GameCollectionViewCell {
     func setup(topModel: TopModel) {
-        gameNameLabel.text = topModel.game.localizedName
+        gameNameLabel.text = topModel.game.name
         
         setLayout()
         getImageFromServer(from: topModel.game.logo.medium, with: topModel.game.localizedName)

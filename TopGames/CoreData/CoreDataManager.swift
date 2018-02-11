@@ -78,6 +78,8 @@ class CoreDataManager {
     func retrieveGames(limit: Int, offset: Int) -> [TopModel] {
         let topFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Top")
         topFetch.sortDescriptors = [NSSortDescriptor(key: "viewers", ascending: false)]
+        topFetch.fetchLimit = limit
+        topFetch.fetchOffset = offset
         
         var topList = [TopModel]()
         do {

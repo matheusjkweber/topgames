@@ -34,7 +34,9 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     var datasource: CollectionViewSectionableDataSourceDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
     var offlineSometime: Bool = false
-    
+    var page = 1
+    private let refreshControl = UIRefreshControl()
+
     var topList: [TopModel] {
         didSet { setupDatasource() }
     }
@@ -54,7 +56,6 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
         setupReachability()
         setupDatasource()
         getGames()
-        CoreDataManager.shared.retrieveGames()
         // Do any additional setup after loading the view.
     }
 
@@ -64,20 +65,23 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     }
     
     func getGames() {
+        let limit = page * 10
+        let offset = (page - 1) * 10
         if isReachable {
             if offlineSometime {
                 callMessageView(text: "Agora que você está de volta online, estamos atualizando a lista de jogos com o servidor!", type: .onlineAgain)
             }
             
             SwiftSpinner.show("Loading games...")
-            RouterService.sharedInstance.FetchTopGames(with: 10, and: 10, { (result) in
+            RouterService.sharedInstance.FetchTopGames(with: limit, and: offset, { (result) in
                 switch(result) {
                 case .success(let tops):
                     if let tops = tops as? [TopModel] {
                         for top in tops {
                             CoreDataManager.shared.addGame(topModel: top)
                         }
-                        self.topList = CoreDataManager.shared.retrieveGames()
+                        self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
+                        self.stopRefresher()
                     }
                     break
                 case .error(let error):
@@ -87,7 +91,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
             })
         } else {
             offlineSometime = true
-            topList = CoreDataManager.shared.retrieveGames()
+            topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
             
             if topList.isEmpty {
                 callMessageView(text: "Por favor, conecte-se com a internet ao menos uma vez para podermos nos conectar com o servidor.", type: .offlineWithoutData)
@@ -102,6 +106,10 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
         collectionView.delegate = datasource
         collectionView.dataSource = datasource
         collectionView.reloadData()
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
+        collectionView.addSubview(refreshControl)
     }
     
     func gamesInfoSections() -> [CollectionSectionable] {
@@ -134,5 +142,17 @@ extension GameGridListViewController {
     }
     @objc func handleNetworkChange(_ notification: Notification){
         getGames()
+    }
+}
+
+//MARK - RefreshControl
+extension GameGridListViewController {
+    @objc private func refresh(_ sender: Any) {
+        // Fetch Weather Data
+        getGames()
+    }
+    
+    func stopRefresher(){
+        refreshControl.endRefreshing()
     }
 }
