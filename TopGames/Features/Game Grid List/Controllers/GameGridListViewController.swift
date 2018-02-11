@@ -24,9 +24,17 @@ extension GameListInfoProtocol {
     }
 }
 
+enum RequestType {
+    case offlineWithData
+    case offlineWithoutData
+    case onlineAgain
+}
+
 class GameGridListViewController: UIViewController, GameListInfoProtocol {
     var datasource: CollectionViewSectionableDataSourceDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
+    var offlineSometime: Bool = false
+    
     var topList: [TopModel] {
         didSet { setupDatasource() }
     }
@@ -43,6 +51,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupReachability()
         setupDatasource()
         getGames()
         CoreDataManager.shared.retrieveGames()
@@ -56,12 +65,19 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
     
     func getGames() {
         if isReachable {
+            if offlineSometime {
+                callMessageView(text: "Agora que você está de volta online, estamos atualizando a lista de jogos com o servidor!", type: .onlineAgain)
+            }
+            
             SwiftSpinner.show("Loading games...")
             RouterService.sharedInstance.FetchTopGames(with: 10, and: 10, { (result) in
                 switch(result) {
-                case .success(let top):
-                    if let top = top as? [TopModel] {
-                        self.topList = top
+                case .success(let tops):
+                    if let tops = tops as? [TopModel] {
+                        for top in tops {
+                            CoreDataManager.shared.addGame(topModel: top)
+                        }
+                        self.topList = CoreDataManager.shared.retrieveGames()
                     }
                     break
                 case .error(let error):
@@ -70,7 +86,14 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
                 SwiftSpinner.hide()
             })
         } else {
+            offlineSometime = true
+            topList = CoreDataManager.shared.retrieveGames()
             
+            if topList.isEmpty {
+                callMessageView(text: "Por favor, conecte-se com a internet ao menos uma vez para podermos nos conectar com o servidor.", type: .offlineWithoutData)
+            } else {
+                callMessageView(text: "Você está offline, mas sem problemas já temos alguns jogos salvos no celular.", type: .offlineWithData)
+            }
         }
     }
     
@@ -85,7 +108,7 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
         return [GamesFactory(collectionView: collectionView, with: self, and: topList).build()]
     }
     
-    func callMessageView(text: String, type: MessageType) {
+    func callMessageView(text: String, type: RequestType) {
         MessageView.callMessageView(in: self, text: text, type: type)
     }
     
@@ -101,5 +124,15 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
 extension GameGridListViewController: GameCollectionViewCellBuilderDelegate {
     func didSelectItemAt(_ indexPath: IndexPath) {
         self.performSegue(withIdentifier: "segueToGameDetail", sender: indexPath)
+    }
+}
+
+//MARK - Deal with internet.
+extension GameGridListViewController {
+    func setupReachability() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNetworkChange(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
+    }
+    @objc func handleNetworkChange(_ notification: Notification){
+        getGames()
     }
 }

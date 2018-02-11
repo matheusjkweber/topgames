@@ -28,8 +28,8 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDK-Gi-0wO">
-                    <rect key="frame" x="73" y="14" width="286" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <rect key="frame" x="73" y="8" width="286" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -39,7 +39,7 @@
                 <constraint firstItem="qxV-Qc-Mx4" firstAttribute="leading" secondItem="ch1-g2-FLd" secondAttribute="leading" constant="16" id="6Gd-tP-7Aa"/>
                 <constraint firstItem="ch1-g2-FLd" firstAttribute="trailing" secondItem="cDK-Gi-0wO" secondAttribute="trailing" constant="16" id="bh2-Cq-kHf"/>
                 <constraint firstItem="cDK-Gi-0wO" firstAttribute="leading" secondItem="qxV-Qc-Mx4" secondAttribute="trailing" constant="14" id="f45-iY-gqQ"/>
-                <constraint firstItem="cDK-Gi-0wO" firstAttribute="top" secondItem="ch1-g2-FLd" secondAttribute="top" constant="14" id="ff1-YJ-uHp"/>
+                <constraint firstItem="cDK-Gi-0wO" firstAttribute="top" secondItem="ch1-g2-FLd" secondAttribute="top" constant="8" id="ff1-YJ-uHp"/>
                 <constraint firstItem="qxV-Qc-Mx4" firstAttribute="centerY" secondItem="ch1-g2-FLd" secondAttribute="centerY" id="vMS-VP-UDI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

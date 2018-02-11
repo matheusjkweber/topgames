@@ -8,20 +8,15 @@
 
 import UIKit
 
-enum MessageType {
-    case OfflineWithData
-    case OfflineWithoutData
-    case OnlineAgain
-}
-
 class MessageView: UIView {
-    static var isShowingMessage = false
     
     @IBOutlet weak var textLabel: UILabel!
     
     @IBOutlet weak var closeButton: UIButton!
     
-    var type:MessageType?
+    var type:RequestType?
+
+    static var activeMessageView: MessageView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +30,7 @@ class MessageView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setup(frame: CGRect, text: String, type: MessageType) {
+    func setup(frame: CGRect, text: String, type: RequestType) {
         textLabel.text = text
         self.frame = frame
         self.type = type
@@ -46,11 +41,11 @@ class MessageView: UIView {
     func changeLayout() {
         if let type = type {
             switch(type) {
-            case .OfflineWithData:
+            case .offlineWithData:
                 backgroundColor = UIColor.yellow
-            case .OfflineWithoutData:
+            case .offlineWithoutData:
                 backgroundColor = UIColor.red
-            case .OnlineAgain:
+            case .onlineAgain:
                 backgroundColor = UIColor.green
             }
             
@@ -66,9 +61,13 @@ class MessageView: UIView {
                 self.closeButton.alpha = 1
             })
         })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+            self.closingAnimation(completion: {})
+        })
     }
     
-    func closingAnimation() {
+    func closingAnimation(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
             self.textLabel.alpha = 0
             self.closeButton.alpha = 0
@@ -77,23 +76,31 @@ class MessageView: UIView {
                 self.frame.size.height = 0
             }, completion: { finished in
                 self.removeFromSuperview()
+                completion()
             })
         })
     }
     
     @IBAction func closeButtonDidTapped(_ sender: Any) {
-        MessageView.isShowingMessage = false
-        closingAnimation()
+        closingAnimation(completion: {})
     }
     
-    static func callMessageView(in vc: UIViewController, text: String, type: MessageType) {
-        if !isShowingMessage {
-            isShowingMessage = true
-            let screenSize: CGRect = UIScreen.main.bounds
-            let frame = CGRect(x: 0, y: 60, width: screenSize.width, height: 0)
-            let nib = UINib(nibName: "MessageView", bundle: nil)
+    static func callMessageView(in vc: UIViewController, text: String, type: RequestType) {
+        let screenSize: CGRect = UIScreen.main.bounds
+        let frame = CGRect(x: 0, y: 60, width: screenSize.width, height: 0)
+        let nib = UINib(nibName: "MessageView", bundle: nil)
+        
+        if var messageView = activeMessageView {
+            messageView.closingAnimation(completion: {
+                messageView = nib.instantiate(withOwner: self, options: nil)[0] as! MessageView
+                messageView.setup(frame: frame, text: text, type: type)
+                activeMessageView = messageView
+                vc.view.addSubview(messageView)
+            })
+        } else {
             let messageView = nib.instantiate(withOwner: self, options: nil)[0] as! MessageView
             messageView.setup(frame: frame, text: text, type: type)
+            activeMessageView = messageView
             vc.view.addSubview(messageView)
         }
     }

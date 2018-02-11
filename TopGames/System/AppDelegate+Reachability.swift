@@ -17,7 +17,7 @@ extension AppDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNetworkChange(_:)), name: NSNotification.Name.reachabilityChanged, object: nil)
         
-        //        reachability = Reachability.reachabilityForInternetConnection()
+        
         reachability.startNotifier()
         
         if reachability.currentReachabilityStatus() == NotReachable {
