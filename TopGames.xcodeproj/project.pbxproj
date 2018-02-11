@@ -26,6 +26,8 @@
 		23E7279420307F61001C5ED9 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7279220307F61001C5ED9 /* Endpoints.swift */; };
 		23E7279520307F61001C5ED9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7279320307F61001C5ED9 /* Router.swift */; };
 		23E7279B203086A6001C5ED9 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E7279A203086A6001C5ED9 /* UIViewController+Ext.swift */; };
+		23E7279F2030883B001C5ED9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E7279D2030883A001C5ED9 /* Reachability.m */; };
+		23E727A120308871001C5ED9 /* AppDelegate+Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A020308870001C5ED9 /* AppDelegate+Reachability.swift */; };
 		5CADAD2B5E96BEF80828E7AC /* Pods_TopGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4FBE3152A0AB6C0A417A06 /* Pods_TopGamesTests.framework */; };
 		5EDF64AFEA92DA8240F0BE04 /* Pods_TopGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */; };
 		9F3E31031E13D09DD17E3F64 /* Pods_TopGamesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8534292F49CC85F50CF774DE /* Pods_TopGamesUITests.framework */; };
@@ -74,6 +76,10 @@
 		23E7279220307F61001C5ED9 /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		23E7279320307F61001C5ED9 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		23E7279A203086A6001C5ED9 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		23E7279D2030883A001C5ED9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		23E7279E2030883A001C5ED9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		23E727A020308870001C5ED9 /* AppDelegate+Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Reachability.swift"; sourceTree = "<group>"; };
+		23E727A22030889C001C5ED9 /* TopGames-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TopGames-Bridging-Header.h"; sourceTree = "<group>"; };
 		294A10E04D5A1396363F5F7C /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 		696DBC0BE93AE07076DB3397 /* Pods-TopGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.debug.xcconfig"; sourceTree = "<group>"; };
 		69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,10 +165,12 @@
 			isa = PBXGroup;
 			children = (
 				23D3B84C202F97AB004A34A1 /* AppDelegate.swift */,
+				23E727A020308870001C5ED9 /* AppDelegate+Reachability.swift */,
 				23D3B850202F97AB004A34A1 /* Main.storyboard */,
 				23D3B856202F97AB004A34A1 /* Assets.xcassets */,
 				23D3B858202F97AB004A34A1 /* LaunchScreen.storyboard */,
 				23D3B853202F97AB004A34A1 /* TopGames.xcdatamodeld */,
+				23E727A22030889C001C5ED9 /* TopGames-Bridging-Header.h */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 				23D3B87D202F9B65004A34A1 /* Features */,
 				23D3B886202FB735004A34A1 /* Models */,
 				23E7279720308462001C5ED9 /* Extensions */,
+				23E7279C20308829001C5ED9 /* Libraries */,
 				23D3B85B202F97AB004A34A1 /* Info.plist */,
 			);
 			path = TopGames;
@@ -298,6 +307,15 @@
 				23E7279A203086A6001C5ED9 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		23E7279C20308829001C5ED9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				23E7279E2030883A001C5ED9 /* Reachability.h */,
+				23E7279D2030883A001C5ED9 /* Reachability.m */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		3C15911C68E62518E2A9B171 /* Pods */ = {
@@ -616,11 +634,13 @@
 				23D3B88E202FB8C3004A34A1 /* GamesFactory.swift in Sources */,
 				23D3B885202FA59F004A34A1 /* CollectionViewCellBuilder.swift in Sources */,
 				23D3B84D202F97AB004A34A1 /* AppDelegate.swift in Sources */,
+				23E727A120308871001C5ED9 /* AppDelegate+Reachability.swift in Sources */,
 				23E7279520307F61001C5ED9 /* Router.swift in Sources */,
 				23D3B894202FBB32004A34A1 /* GameCollectionViewCell.swift in Sources */,
 				236B095B202FD33D00D803B9 /* GameDetailViewController.swift in Sources */,
 				23D3B855202F97AB004A34A1 /* TopGames.xcdatamodeld in Sources */,
 				23D3B888202FB74A004A34A1 /* GameModel.swift in Sources */,
+				23E7279F2030883B001C5ED9 /* Reachability.m in Sources */,
 				236B0954202FBE1F00D803B9 /* GameCollectionViewCellBuilder.swift in Sources */,
 				23D3B883202F9C46004A34A1 /* CollectionViewSectionableDataSourceDelegate.swift in Sources */,
 				23E7279420307F61001C5ED9 /* Endpoints.swift in Sources */,
@@ -796,6 +816,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mjkweber.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/System/TopGames-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -812,6 +833,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mjkweber.TopGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/System/TopGames-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

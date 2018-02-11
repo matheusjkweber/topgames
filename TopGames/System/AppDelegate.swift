@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
+var isReachable: Bool = false
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    var reachability: Reachability = Reachability.forInternetConnection()
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        configureReachability()
         // Override point for customization after application launch.
         return true
     }
@@ -88,6 +89,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

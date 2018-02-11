@@ -74,8 +74,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZeP-bh-Nc3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZeP-bh-Nc3">
                                                 <rect key="frame" x="67" y="218" width="240" height="209"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="l9o-Z9-WVi"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="953 canais" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4V-0v-L51">
                                                 <rect key="frame" x="8" y="79" width="85" height="21"/>
@@ -87,6 +90,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ZeP-bh-Nc3" firstAttribute="centerX" secondItem="NTb-Xk-dp4" secondAttribute="centerX" id="7At-Vb-UEz"/>
+                                            <constraint firstItem="QxT-wf-VGr" firstAttribute="leading" secondItem="C4V-0v-L51" secondAttribute="trailing" constant="137" id="Aud-12-tIY"/>
                                             <constraint firstItem="C4V-0v-L51" firstAttribute="top" secondItem="TMT-E3-M5c" secondAttribute="bottom" constant="24" id="HGk-23-b19"/>
                                             <constraint firstItem="QxT-wf-VGr" firstAttribute="top" secondItem="TMT-E3-M5c" secondAttribute="bottom" constant="24" id="KFE-zn-d5U"/>
                                             <constraint firstAttribute="trailing" secondItem="QxT-wf-VGr" secondAttribute="trailing" constant="8" id="UUb-5K-NIA"/>
