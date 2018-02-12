@@ -6,6 +6,14 @@
 //  Copyright © 2018 Matheus Weber. All rights reserved.
 //
 
+import UIKit
+import AlamofireImage
+
+enum ImageType {
+    case box
+    case logo
+}
+
 struct ResultModel: Codable {
     var total: Int
     var top: [TopModel]
@@ -72,5 +80,28 @@ struct GameModel: Codable {
         localizedName = game.value(forKey: "localizedName") as? String ?? ""
         box = ImageModel(image: game.value(forKey: "box") as? Image ?? Image())
         logo = ImageModel(image: game.value(forKey: "logo") as? Image ?? Image())
+    }
+    
+    func getImage(type: ImageType, completion: @escaping (UIImage) -> Void) {
+        let cache = ImageCache()
+        
+        var name = localizedName
+        var imagePath = logo.large
+        
+        if type == .box {
+            name = "\(localizedName)_box"
+            imagePath = box.large
+        }
+        
+        if let image = cache.getSavedImage(named: name) {
+            completion(image)
+        } else if let url = URL(string: imagePath){
+            UIImageView().af_setImage(withURL: url, placeholderImage: UIImage(named: "no-image"), imageTransition: .crossDissolve(TimeInterval(0.5)), completion:{ response in
+                if let image = response.result.value{
+                    cache.saveImageToDisk(image: image, and: name)
+                    completion(image)
+                }
+            })
+        }
     }
 }

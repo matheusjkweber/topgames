@@ -95,4 +95,14 @@ class CoreDataManager {
         
         return topList
     }
+    
+    func retrieveNumberOfGames() -> Int {
+        let topFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Top")
+        do {
+            let count = try managedContext.count(for: topFetch)
+            return count
+        } catch {
+            return 0
+        }
+    }
 }
