@@ -78,7 +78,6 @@ class RouterService {
             .validate()
             .responseData() { response in
                 switch response.result {
-                    
                 case .success (let result):
                     callback(.success(result))
                 case .failure(let error):

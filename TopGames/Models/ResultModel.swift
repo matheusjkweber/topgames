@@ -82,7 +82,7 @@ struct GameModel: Codable {
         logo = ImageModel(image: game.value(forKey: "logo") as? Image ?? Image())
     }
     
-    func getImage(type: ImageType, completion: @escaping (UIImage) -> Void) {
+    func getImage(type: ImageType, completion: @escaping (UIImage?) -> Void) {
         let cache = ImageCache()
         
         var name = localizedName
@@ -96,12 +96,16 @@ struct GameModel: Codable {
         if let image = cache.getSavedImage(named: name) {
             completion(image)
         } else if let url = URL(string: imagePath){
-            UIImageView().af_setImage(withURL: url, placeholderImage: UIImage(named: "no-image"), imageTransition: .crossDissolve(TimeInterval(0.5)), completion:{ response in
-                if let image = response.result.value{
-                    cache.saveImageToDisk(image: image, and: name)
-                    completion(image)
-                }
-            })
+            if isReachable {
+                UIImageView().af_setImage(withURL: url, placeholderImage: UIImage(named: "no-image"), imageTransition: .crossDissolve(TimeInterval(0.5)), completion:{ response in
+                    if let image = response.result.value{
+                        cache.saveImageToDisk(image: image, and: name)
+                        completion(image)
+                    }
+                })
+            } else {
+                completion(nil)
+            }
         }
     }
 }

@@ -25,11 +25,6 @@ class GameDetailViewController: UIViewController {
         loadData()
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func configureNavigation() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -43,26 +38,33 @@ class GameDetailViewController: UIViewController {
             gameTitleLabel.text = topModel.game.name
             
             topModel.game.getImage(type: .logo) { (image) in
-                UIView.transition(with: self.logoImageView,
-                                  duration: 0.5,
-                                  options: UIViewAnimationOptions.transitionCrossDissolve,
-                                  animations: { self.logoImageView.image = image },
-                                  completion: nil)
-                if isReachable {
-                    topModel.game.getImage(type: .box) { (image) in
-                        UIView.transition(with: self.boxImageView,
-                                          duration: 0.5,
-                                          options: UIViewAnimationOptions.transitionCrossDissolve,
-                                          animations: { self.boxImageView.image = image },
-                                          completion: nil)
+                if let image = image {
+                    UIView.transition(with: self.logoImageView,
+                                      duration: 0.5,
+                                      options: UIViewAnimationOptions.transitionCrossDissolve,
+                                      animations: { self.logoImageView.image = image },
+                                      completion: {(finished) in
+                                        self.view.layoutIfNeeded()
+                                        
+                                        })
+                        topModel.game.getImage(type: .box) { (image) in
+                            if let image = image {
+                                UIView.transition(with: self.boxImageView,
+                                                  duration: 0.5,
+                                                  options: UIViewAnimationOptions.transitionCrossDissolve,
+                                                  animations: { self.boxImageView.image = image },
+                                                  completion: {(finished) in
+                                                    self.view.layoutIfNeeded()
+                                                    
+                                                    })
+                                
+                        }
                         SwiftSpinner.hide()
                     }
                 } else {
                     SwiftSpinner.hide()
                 }
-                
             }
-            
         } else {
             channelLabel.text = ""
             viewersLabel.text = ""
