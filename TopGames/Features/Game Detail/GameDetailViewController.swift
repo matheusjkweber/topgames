@@ -11,6 +11,7 @@ import SwiftSpinner
 
 class GameDetailViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var gameTitleLabel: UILabel!
     @IBOutlet weak var channelLabel: UILabel!
     @IBOutlet weak var viewersLabel: UILabel!
     @IBOutlet weak var boxImageView: UIImageView!
@@ -39,6 +40,7 @@ class GameDetailViewController: UIViewController {
         if let topModel = topModel {
             channelLabel.text = "\(topModel.channels) canais"
             viewersLabel.text = "\(topModel.viewers) visualizações"
+            gameTitleLabel.text = topModel.game.name
             
             topModel.game.getImage(type: .logo) { (image) in
                 UIView.transition(with: self.logoImageView,
@@ -64,6 +66,7 @@ class GameDetailViewController: UIViewController {
         } else {
             channelLabel.text = ""
             viewersLabel.text = ""
+            gameTitleLabel.text = ""
         }
         
         SwiftSpinner.show("Loading...")

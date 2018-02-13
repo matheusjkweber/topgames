@@ -1,9 +1,9 @@
 //
 //  Router.swift
-//  Swish
+//  TopGames
 //
-//  Created by Matheus Weber on 24/08/16.
-//  Copyright © 2016 Matheus Weber. All rights reserved.
+//  Created by Matheus Weber on 10/02/18.
+//  Copyright © 2018 Matheus Weber. All rights reserved.
 //
 
 import Foundation
