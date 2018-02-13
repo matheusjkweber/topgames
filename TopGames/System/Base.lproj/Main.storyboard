@@ -14,7 +14,7 @@
         <!--Game Grid-->
         <scene sceneID="9RA-lp-aoY">
             <objects>
-                <viewController title="Game Grid" id="pNh-XS-2kQ" customClass="GameGridListViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameGridList" title="Game Grid" id="pNh-XS-2kQ" customClass="GameGridListViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SiC-L1-22d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
         <!--Game Detail View Controller-->
         <scene sceneID="kU1-7F-3H0">
             <objects>
-                <viewController id="nmF-C8-WkK" customClass="GameDetailViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameDetail" id="nmF-C8-WkK" customClass="GameDetailViewController" customModule="TopGames" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Qe-fl-O6M"/>
                         <viewControllerLayoutGuide type="bottom" id="jF2-8u-td5"/>

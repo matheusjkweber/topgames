@@ -100,49 +100,60 @@ class GameGridListViewController: UIViewController, GameListInfoProtocol {
 //MARK: Requests
 extension GameGridListViewController {
     func getGames() {
+        if isReachable {
+            getGamesWhenOnline()
+        } else {
+            getGamesWhenOffline()
+        }
+    }
+    
+    func getGamesWhenOnline() {
         let limit = elementsPerPage
         let offset = (page - 1) * elementsPerPage
         
-        if isReachable {
-            if offlineSometime {
-                callMessageView(text: "Agora que você está de volta online, estamos atualizando a lista de jogos com o servidor!", type: .onlineAgain)
-            }
-            
-            SwiftSpinner.show("Loading games...")
-            RouterService.sharedInstance.FetchTopGames(with: limit, and: offset, { (result) in
-                switch(result) {
-                case .success(let tops):
-                    if let tops = tops as? [TopModel] {
-                        for top in tops {
-                            CoreDataManager.shared.addGame(topModel: top)
-                        }
-                        if self.page > 1 {
-                            self.topList.append(contentsOf: CoreDataManager.shared.retrieveGames(limit: limit, offset: offset))
-                        } else {
-                            self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
-                        }
-                        self.stopRefresher()
+        if offlineSometime {
+            callMessageView(text: "Agora que você está de volta online, estamos atualizando a lista de jogos com o servidor!", type: .onlineAgain)
+        }
+        
+        SwiftSpinner.show("Loading games...")
+        RouterService.sharedInstance.FetchTopGames(with: limit, and: offset, { (result) in
+            switch(result) {
+            case .success(let tops):
+                if let tops = tops as? [TopModel] {
+                    for top in tops {
+                        CoreDataManager.shared.addGame(topModel: top)
                     }
-                    break
-                case .error(let error):
-                    print(error)
+                    if self.page > 1 {
+                        self.topList.append(contentsOf: CoreDataManager.shared.retrieveGames(limit: limit, offset: offset))
+                    } else {
+                        self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
+                    }
+                    self.stopRefresher()
                 }
-                SwiftSpinner.hide()
-            })
+                break
+            case .error(let error):
+                print(error)
+            }
+            SwiftSpinner.hide()
+        })
+    }
+    
+    func getGamesWhenOffline() {
+        let limit = elementsPerPage
+        let offset = (page - 1) * elementsPerPage
+        
+        offlineSometime = true
+        
+        if page > 1 {
+            self.topList.append(contentsOf: CoreDataManager.shared.retrieveGames(limit: limit, offset: offset))
         } else {
-            offlineSometime = true
-            
-            if page > 1 {
-                self.topList.append(contentsOf: CoreDataManager.shared.retrieveGames(limit: limit, offset: offset))
-            } else {
-                self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
-            }
-            
-            if topList.isEmpty {
-                callMessageView(text: "Por favor, conecte-se com a internet ao menos uma vez para podermos nos conectar com o servidor.", type: .offlineWithoutData)
-            } else {
-                callMessageView(text: "Você está offline, mas sem problemas já temos alguns jogos salvos no celular.", type: .offlineWithData)
-            }
+            self.topList = CoreDataManager.shared.retrieveGames(limit: limit, offset: offset)
+        }
+        
+        if topList.isEmpty {
+            callMessageView(text: "Por favor, conecte-se com a internet ao menos uma vez para podermos nos conectar com o servidor.", type: .offlineWithoutData)
+        } else {
+            callMessageView(text: "Você está offline, mas sem problemas já temos alguns jogos salvos no celular.", type: .offlineWithData)
         }
     }
 }
@@ -166,7 +177,7 @@ extension GameGridListViewController {
 
 //MARK: RefreshControl
 extension GameGridListViewController {
-    @objc private func refresh(_ sender: Any) {
+    @objc func refresh(_ sender: Any) {
         // Fetch Weather Data
         page = 1
         getGames()

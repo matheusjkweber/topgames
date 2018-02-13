@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2317D1282033521A00FCA35B /* CoreDataManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317D1272033521A00FCA35B /* CoreDataManagerSpec.swift */; };
 		236B0954202FBE1F00D803B9 /* GameCollectionViewCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B0953202FBE1F00D803B9 /* GameCollectionViewCellBuilder.swift */; };
 		236B095B202FD33D00D803B9 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B095A202FD33D00D803B9 /* GameDetailViewController.swift */; };
 		23D3B84D202F97AB004A34A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B84C202F97AB004A34A1 /* AppDelegate.swift */; };
@@ -14,8 +15,7 @@
 		23D3B855202F97AB004A34A1 /* TopGames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B853202F97AB004A34A1 /* TopGames.xcdatamodeld */; };
 		23D3B857202F97AB004A34A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23D3B856202F97AB004A34A1 /* Assets.xcassets */; };
 		23D3B85A202F97AB004A34A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23D3B858202F97AB004A34A1 /* LaunchScreen.storyboard */; };
-		23D3B865202F97AC004A34A1 /* TopGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B864202F97AC004A34A1 /* TopGamesTests.swift */; };
-		23D3B870202F97AC004A34A1 /* TopGamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B86F202F97AC004A34A1 /* TopGamesUITests.swift */; };
+		23D3B865202F97AC004A34A1 /* GameGridListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B864202F97AC004A34A1 /* GameGridListViewControllerSpec.swift */; };
 		23D3B880202F9B84004A34A1 /* GameGridListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B87F202F9B84004A34A1 /* GameGridListViewController.swift */; };
 		23D3B883202F9C46004A34A1 /* CollectionViewSectionableDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B882202F9C46004A34A1 /* CollectionViewSectionableDataSourceDelegate.swift */; };
 		23D3B885202FA59F004A34A1 /* CollectionViewCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D3B884202FA59F004A34A1 /* CollectionViewCellBuilder.swift */; };
@@ -32,6 +32,10 @@
 		23E727A72030B8FC001C5ED9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A62030B8FC001C5ED9 /* MessageView.swift */; };
 		23E727AA2030D43B001C5ED9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727A92030D43B001C5ED9 /* CoreDataManager.swift */; };
 		23E727AD2030EA7F001C5ED9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E727AC2030EA7F001C5ED9 /* ImageCache.swift */; };
+		23EBC33A2033334D0078FD22 /* TopsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EBC3392033334D0078FD22 /* TopsMock.json */; };
+		23EBC33D203333700078FD22 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBC33C203333700078FD22 /* Mockable.swift */; };
+		23EBC33E20333C1B0078FD22 /* TopsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 23EBC3392033334D0078FD22 /* TopsMock.json */; };
+		23EBC34120334ECA0078FD22 /* GameDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBC34020334ECA0078FD22 /* GameDetailViewControllerSpec.swift */; };
 		5CADAD2B5E96BEF80828E7AC /* Pods_TopGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4FBE3152A0AB6C0A417A06 /* Pods_TopGamesTests.framework */; };
 		5EDF64AFEA92DA8240F0BE04 /* Pods_TopGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */; };
 		9F3E31031E13D09DD17E3F64 /* Pods_TopGamesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8534292F49CC85F50CF774DE /* Pods_TopGamesUITests.framework */; };
@@ -55,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2317D1272033521A00FCA35B /* CoreDataManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerSpec.swift; sourceTree = "<group>"; };
 		236B0953202FBE1F00D803B9 /* GameCollectionViewCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollectionViewCellBuilder.swift; sourceTree = "<group>"; };
 		236B095A202FD33D00D803B9 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		23D3B849202F97AB004A34A1 /* TopGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,10 +70,9 @@
 		23D3B859202F97AB004A34A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23D3B85B202F97AB004A34A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D3B860202F97AC004A34A1 /* TopGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		23D3B864202F97AC004A34A1 /* TopGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGamesTests.swift; sourceTree = "<group>"; };
+		23D3B864202F97AC004A34A1 /* GameGridListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridListViewControllerSpec.swift; sourceTree = "<group>"; };
 		23D3B866202F97AC004A34A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D3B86B202F97AC004A34A1 /* TopGamesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TopGamesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		23D3B86F202F97AC004A34A1 /* TopGamesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGamesUITests.swift; sourceTree = "<group>"; };
 		23D3B871202F97AC004A34A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D3B87F202F9B84004A34A1 /* GameGridListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridListViewController.swift; sourceTree = "<group>"; };
 		23D3B882202F9C46004A34A1 /* CollectionViewSectionableDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSectionableDataSourceDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,9 @@
 		23E727A62030B8FC001C5ED9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		23E727A92030D43B001C5ED9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		23E727AC2030EA7F001C5ED9 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		23EBC3392033334D0078FD22 /* TopsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TopsMock.json; sourceTree = "<group>"; };
+		23EBC33C203333700078FD22 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		23EBC34020334ECA0078FD22 /* GameDetailViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		294A10E04D5A1396363F5F7C /* Pods-TopGames.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.release.xcconfig"; sourceTree = "<group>"; };
 		696DBC0BE93AE07076DB3397 /* Pods-TopGames.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopGames.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopGames/Pods-TopGames.debug.xcconfig"; sourceTree = "<group>"; };
 		69723E2D3C74CC370E689FF1 /* Pods_TopGames.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopGames.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +142,14 @@
 				8534292F49CC85F50CF774DE /* Pods_TopGamesUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2317D1262033520400FCA35B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2317D1272033521A00FCA35B /* CoreDataManagerSpec.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		236B0955202FCB4600D803B9 /* Builders */ = {
@@ -224,7 +239,9 @@
 		23D3B863202F97AC004A34A1 /* TopGamesTests */ = {
 			isa = PBXGroup;
 			children = (
-				23D3B864202F97AC004A34A1 /* TopGamesTests.swift */,
+				23EBC336203332C80078FD22 /* Mocks */,
+				23EBC33420332F7F0078FD22 /* Features */,
+				2317D1262033520400FCA35B /* CoreData */,
 				23D3B866202F97AC004A34A1 /* Info.plist */,
 			);
 			path = TopGamesTests;
@@ -233,7 +250,6 @@
 		23D3B86E202F97AC004A34A1 /* TopGamesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				23D3B86F202F97AC004A34A1 /* TopGamesUITests.swift */,
 				23D3B871202F97AC004A34A1 /* Info.plist */,
 			);
 			path = TopGamesUITests;
@@ -350,8 +366,42 @@
 			children = (
 				23E7279C20308829001C5ED9 /* Libraries */,
 				23E727AC2030EA7F001C5ED9 /* ImageCache.swift */,
+				23EBC33C203333700078FD22 /* Mockable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		23EBC33420332F7F0078FD22 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				23EBC33F20334EB80078FD22 /* Game Detail */,
+				23EBC33520332F840078FD22 /* Game Grid List */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		23EBC33520332F840078FD22 /* Game Grid List */ = {
+			isa = PBXGroup;
+			children = (
+				23D3B864202F97AC004A34A1 /* GameGridListViewControllerSpec.swift */,
+			);
+			path = "Game Grid List";
+			sourceTree = "<group>";
+		};
+		23EBC336203332C80078FD22 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				23EBC3392033334D0078FD22 /* TopsMock.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		23EBC33F20334EB80078FD22 /* Game Detail */ = {
+			isa = PBXGroup;
+			children = (
+				23EBC34020334ECA0078FD22 /* GameDetailViewControllerSpec.swift */,
+			);
+			path = "Game Detail";
 			sourceTree = "<group>";
 		};
 		3C15911C68E62518E2A9B171 /* Pods */ = {
@@ -484,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23E727A52030B717001C5ED9 /* MessageView.xib in Resources */,
+				23EBC33E20333C1B0078FD22 /* TopsMock.json in Resources */,
 				23D3B892202FB9AC004A34A1 /* GameCollectionViewCell.xib in Resources */,
 				23D3B85A202F97AB004A34A1 /* LaunchScreen.storyboard in Resources */,
 				23D3B857202F97AB004A34A1 /* Assets.xcassets in Resources */,
@@ -495,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EBC33A2033334D0078FD22 /* TopsMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,9 +621,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TopGamesTests/Pods-TopGamesTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -671,6 +732,7 @@
 				23D3B88E202FB8C3004A34A1 /* GamesFactory.swift in Sources */,
 				23D3B885202FA59F004A34A1 /* CollectionViewCellBuilder.swift in Sources */,
 				23E727AA2030D43B001C5ED9 /* CoreDataManager.swift in Sources */,
+				23EBC33D203333700078FD22 /* Mockable.swift in Sources */,
 				23D3B84D202F97AB004A34A1 /* AppDelegate.swift in Sources */,
 				23E727A120308871001C5ED9 /* AppDelegate+Reachability.swift in Sources */,
 				23E7279520307F61001C5ED9 /* Router.swift in Sources */,
@@ -691,7 +753,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D3B865202F97AC004A34A1 /* TopGamesTests.swift in Sources */,
+				23EBC34120334ECA0078FD22 /* GameDetailViewControllerSpec.swift in Sources */,
+				2317D1282033521A00FCA35B /* CoreDataManagerSpec.swift in Sources */,
+				23D3B865202F97AC004A34A1 /* GameGridListViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +763,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D3B870202F97AC004A34A1 /* TopGamesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

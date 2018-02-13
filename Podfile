@@ -16,6 +16,9 @@ target 'TopGames' do
   target 'TopGamesTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble', '~> 7.0.2'
+    pod 'Nimble-Snapshots'
+    pod 'Quick'
   end
 
   target 'TopGamesUITests' do
