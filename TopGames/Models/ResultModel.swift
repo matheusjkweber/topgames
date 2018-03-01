@@ -14,7 +14,7 @@ enum ImageType {
     case logo
 }
 
-struct ResultModel: Codable {
+class ResultModel: Codable {
     var total: Int
     var top: [TopModel]
     
@@ -24,7 +24,7 @@ struct ResultModel: Codable {
     }
 }
 
-struct TopModel: Codable {
+class TopModel: Codable {
     var channels: Int
     var viewers: Int
     var game: GameModel
@@ -36,7 +36,7 @@ struct TopModel: Codable {
     }
 }
 
-struct ImageModel: Codable {
+class ImageModel: Codable {
     var large: String
     var medium: String
     var small: String
@@ -50,7 +50,7 @@ struct ImageModel: Codable {
     }
 }
 
-struct GameModel: Codable {
+class GameModel: Codable {
     var id: Int
     var name: String
     var popularity: Int

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CollectionSectionable {
-    init(cellBuilders: [CollectionViewCellBuilder], in collectionView: UICollectionView)
+    init(cellBuilder: CollectionViewCellBuilder, in collectionView: UICollectionView)
 
     func numberOfRows() -> Int
     func cellSizeForIndexPath(_ indexPath: IndexPath,
@@ -20,36 +20,35 @@ protocol CollectionSectionable {
 }
 
 class BaseSection: CollectionSectionable {
-    let cellBuilders: [CollectionViewCellBuilder]
+    let cellBuilder: CollectionViewCellBuilder
     
-    required init(cellBuilders: [CollectionViewCellBuilder], in collectionView: UICollectionView) {
-        self.cellBuilders = cellBuilders
+    required init(cellBuilder: CollectionViewCellBuilder, in collectionView: UICollectionView) {
+        self.cellBuilder = cellBuilder
         registerCells(in: collectionView)
     }
     
     private func registerCells(in collectionView: UICollectionView) {
-        for builder in cellBuilders {
-            builder.registerCell(in: collectionView)
-        }
+        cellBuilder.registerCell(in: collectionView)
     }
     
     func numberOfRows() -> Int {
-        return cellBuilders.count
+        return cellBuilder.numberOfCells()
     }
     
     func cellForIndexPath(_ indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
-        let builder = cellBuilders[indexPath.row]
-        return builder.cellAt(indexPath: indexPath, in: collectionView)
+        return cellBuilder.cellAt(indexPath: indexPath, in: collectionView)
     }
     
     func cellSizeForIndexPath(_ indexPath: IndexPath, in collectionView: UICollectionView) -> CGSize {
-        let builder = cellBuilders[indexPath.row]
-        return builder.cellSize()
+        return cellBuilder.cellSize()
     }
     
     func didSelectItemAt(_ indexPath: IndexPath, in collectionView: UICollectionView) {
-        let builder = cellBuilders[indexPath.row]
-        builder.didSelectItemAt(indexPath: indexPath)
+        cellBuilder.didSelectItemAt(indexPath: indexPath)
+    }
+    
+    func numberOfCells() -> Int{
+        return cellBuilder.numberOfCells()
     }
 }
 

@@ -13,11 +13,11 @@ protocol GameCollectionViewCellBuilderDelegate: class {
 }
 
 final class GameCollectionViewCellBuilder: CollectionViewCellBuilder {
-    var topModel: TopModel
+    var topModels: [TopModel]
     weak var delegate: GameCollectionViewCellBuilderDelegate?
     
-    init(topModel: TopModel) {
-        self.topModel = topModel
+    init(topModels: [TopModel]) {
+        self.topModels = topModels
     }
     
     func registerCell(in collectionView: UICollectionView) {
@@ -34,7 +34,7 @@ final class GameCollectionViewCellBuilder: CollectionViewCellBuilder {
         }
         
         cell.setup(
-            topModel: topModel
+            topModel: topModels[indexPath.row]
         )
         
         return cell
@@ -46,5 +46,9 @@ final class GameCollectionViewCellBuilder: CollectionViewCellBuilder {
     
     func didSelectItemAt(indexPath: IndexPath) {
         delegate?.didSelectItemAt(indexPath)
+    }
+    
+    func numberOfCells() -> Int {
+        return topModels.count
     }
 }

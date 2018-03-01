@@ -21,15 +21,10 @@ class GamesFactory {
     }
     
     func build() -> CollectionSectionable {
-        var builders = [CollectionViewCellBuilder]()
+        let builder = GameCollectionViewCellBuilder(topModels: gamesList)
+        builder.delegate = handler
         
-        for game in gamesList {
-            let builder = GameCollectionViewCellBuilder(topModel: game)
-            builder.delegate = handler
-            builders.append(builder)
-        }
-        
-        return BaseSection(cellBuilders: builders, in: collectionView)
+        return BaseSection(cellBuilder: builder, in: collectionView)
     }
 }
 

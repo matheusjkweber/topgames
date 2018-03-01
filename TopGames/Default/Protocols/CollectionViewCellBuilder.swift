@@ -22,4 +22,5 @@ protocol CollectionViewCellBuilder {
     func cellAt(indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell
     func reuseIdentifier() -> String
     func didSelectItemAt(indexPath: IndexPath)
+    func numberOfCells() -> Int
 }
